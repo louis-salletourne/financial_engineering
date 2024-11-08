@@ -43,7 +43,7 @@ def antithetic_method():
     for i in range(0, n_simulated_stock_paths):
         ST_1 = S0
         ST_2 = S0
-        for j in step:
+        for _ in step:
             epsilon = np.random.normal()
             ST_1 *= np.exp((r - q - 0.5 * sigma * sigma) * dt + sigma * epsilon * sqrt_dt)
             ST_2 *= np.exp((r - q - 0.5 * sigma * sigma) * dt - sigma * epsilon * sqrt_dt)
