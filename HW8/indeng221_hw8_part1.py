@@ -32,7 +32,7 @@ def monte_carlo_simulation():
         payoff[i] = option_payoff(ST, K, option_type)
 
     option_price = np.mean(payoff) * np.exp(-r * T)
-    std_dev = np.std(payoff) / np.sqrt(n_simulated_stock_paths)
+    std_dev = np.std(payoff) / np.sqrt(n_simulated_stock_paths) * np.exp(-r * T)
     return option_price, std_dev
 
 def antithetic_method():
@@ -50,7 +50,7 @@ def antithetic_method():
         payoff[i] = (option_payoff(ST_1, K, option_type) + option_payoff(ST_2, K, option_type)) / 2
 
     option_price = np.mean(payoff) * np.exp(-r * T)
-    std_dev = np.std(payoff) / np.sqrt(n_simulated_stock_paths)
+    std_dev = np.std(payoff) / np.sqrt(n_simulated_stock_paths) * np.exp(-r * T)
     return option_price, std_dev
 
 def control_variate_method():
@@ -82,7 +82,7 @@ def control_variate_method():
 
     # Discounted price with control variate adjustment
     option_price = np.mean(adjusted_payoffs) * np.exp(-r * T)
-    std_dev = np.std(adjusted_payoffs) / np.sqrt(n_simulated_stock_paths)
+    std_dev = np.std(adjusted_payoffs) / np.sqrt(n_simulated_stock_paths) * np.exp(-r * T)
     return option_price, std_dev
 
 def bsm_call_price():
