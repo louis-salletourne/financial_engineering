@@ -1,3 +1,4 @@
-HW8.*
-
-!HW8.pdf
+HW8_*
+HW8.ipynb
+!HW8_part1.pdf
+!HW8_part2.pdf
